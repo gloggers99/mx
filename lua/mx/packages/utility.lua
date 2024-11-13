@@ -1,10 +1,10 @@
 return {
     {
-        "cohama/lexima.vim"
+        "nvim-tree/nvim-tree.lua",
+        opts = {}
     },
     {
-        "stevearc/oil.nvim",
-        opts = {}
+        "cohama/lexima.vim"
     },
     {
         "nvim-tree/nvim-web-devicons"

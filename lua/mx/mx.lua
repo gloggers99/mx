@@ -21,6 +21,9 @@ vim.opt.rtp:prepend(lazypath)
 
 -- setup base vim settings
 
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 vim.g.mouse = "a"
@@ -39,6 +42,15 @@ vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.opt.timeoutlen = 50
 
+vim.diagnostic.config({
+    virtual_text = true,
+    signs = true,
+    update_in_insert = true,
+    underline = true,
+    severity_sort = false,
+    float = true
+})
+
 -- load lazy
 
 require("lazy").setup({
@@ -47,6 +59,7 @@ require("lazy").setup({
     },
     install = { colorscheme = { settings.colorscheme } },
     checker = { enabled = true, notify = false },
+    change_detection = { notify = false }
 })
 
 -- additional settings that require being set afterward

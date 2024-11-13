@@ -3,6 +3,9 @@ return {
         "nyoom-engineering/oxocarbon.nvim"
     },
     {
+        "morhetz/gruvbox"
+    },
+    {
         "lewis6991/gitsigns.nvim",
         opts = {}
     },
