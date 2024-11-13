@@ -1,4 +1,5 @@
 local settings = require("mx.settings")
+local keymap = require("mx.keymap")
 
 -- bootstrap lazy.nvim for packages and plugins
 
@@ -36,6 +37,7 @@ vim.opt.background = "dark"
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
+vim.opt.timeoutlen = 50
 
 -- load lazy
 
@@ -44,9 +46,28 @@ require("lazy").setup({
         { import = "mx.packages" }
     },
     install = { colorscheme = { settings.colorscheme } },
-    checker = { enabled = true },
+    checker = { enabled = true, notify = false },
 })
 
 -- additional settings that require being set afterward
 
 vim.cmd("colorscheme " .. settings.colorscheme)
+
+-- setup keymap
+
+for _, v in ipairs(keymap) do
+    vim.keymap.set(v[1], v[2], v[3])
+end
+
+-- setup LSP's
+
+require("lspconfig").lua_ls.setup {
+    settings = {
+        Lua = {
+            diagnostics = {
+                globals = { "vim" }
+            }
+        }
+    }
+}
+
